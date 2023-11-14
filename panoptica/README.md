@@ -9,7 +9,7 @@ The package allows to compute instance-wise segmentation quality metrics for 2D 
 
 ## Use Case: Semantic Segmentation Input
 
-<img src="./spine_seg/semantic/fig.png" alt="unmatched_instance_figure" height="300"/>
+<img src="./spine_seg/semantic/fig.png" alt="semantic_figure" height="300"/>
 
 Even though for many biomedical segmentation problems, an instance-wise evaluation is highly relevant and desirable, they are still addressed as semantic segmentation problems due to lack of appropriate instance labels.
 
@@ -29,7 +29,7 @@ For this case Modules [2-3] can be utilized to match the instances and report pa
 
 ## Use Case: Matched Instances Input
 
-<img src="./spine_seg/matched_instance/fig.png" alt="unmatched_instance_figure" height="300"/>
+<img src="./spine_seg/matched_instance/fig.png" alt="matched_instance_figure" height="300"/>
 
 Ideally the input data already provides matched instances.
 
