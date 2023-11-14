@@ -3,7 +3,7 @@
 This folder contains several Jupyter notebooks to showcase different possible use cases of the [panoptica package](https://github.com/BrainLesion/panoptica).
 The package allows to compute instance-wise segmentation quality metrics for 2D and 3D semantic- and instance segmentation maps by providing 3 core modules:
 
-1. Instance Approximater
+1. Instance Approximator
 1. Instance Matcher
 1. Panoptic Evaluator
 
