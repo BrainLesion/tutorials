@@ -5,7 +5,9 @@ The package allows to compute instance-wise segmentation quality metrics for 2D 
 
 1. Instance Approximator: instance approximation algorithms in panoptic segmentation evaluation. Available now: connected components algorithm.
 1. Instance Matcher: instance matching algorithm in panoptic segmentation evaluation, to align and compare predicted instances with reference instances.
-1. Panoptic Evaluator: Evaluation of panoptic segmentation performance by evaluating matched instance pairs and calculating various metrics like true positives, Dice score, IoU, and ASSD for each instance.
+1. Instance Evaluator: Evaluation of panoptic segmentation performance by evaluating matched instance pairs and calculating various metrics like true positives, Dice score, IoU, and ASSD for each instance.
+
+![workflow_figure](https://github.com/BrainLesion/panoptica/blob/main/examples/figures/workflow.png)
 
 ## Use Cases
 
