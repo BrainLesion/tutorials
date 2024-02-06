@@ -24,6 +24,12 @@ def visualize_data(data_folder: str = DATA_FOLDER, slice_index: int = 75):
 
 
 def visualize_segmentation(modality_file: str, segmentation_file: str):
+    """Visualize the MRI modality and the segmentation
+
+    Args:
+        modality_file (str): Path to the desired modality file
+        segmentation_file (str): Path to the segmentation file
+    """
     modality_np = nib.load(modality_file).get_fdata().transpose(2, 1, 0)
     seg_np = nib.load(segmentation_file).get_fdata().transpose(2, 1, 0)
     _, ax = plt.subplots(1, 2, figsize=(8, 4))
