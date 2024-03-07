@@ -45,7 +45,7 @@ def visualize_data(data_folder: str = DATA_FOLDER, slice_index: int = 75):
         axes[i].imshow(modality_np[slice_index, :, :], cmap="gray")
         axes[i].axis("off")
 
-def visualize_segmentation(modality_file: str, segmentation_file: str):
+def visualize_segmentation(modality_file: str, segmentation_file: str, slice_p = 0.5):
     """Visualize the MRI modality and the segmentation
 
     Args:
@@ -56,10 +56,10 @@ def visualize_segmentation(modality_file: str, segmentation_file: str):
     seg_np = nib.load(segmentation_file).get_fdata().transpose(2, 1, 0)
     _, ax = plt.subplots(1, 2, figsize=(8, 4))
 
-    slice_index = modality_np.shape[0] // 2  # You can choose any slice here
+    slice_index = int(modality_np.shape[0] * slice_p)  # You can choose any slice here
     ax[0].imshow(modality_np[slice_index, :, :], cmap="gray")
     ax[1].imshow(modality_np[slice_index, :, :], cmap="gray")
-    ax[1].imshow(seg_np[slice_index, :, :], cmap="plasma", alpha=0.3)
+    ax[1].imshow(seg_np[slice_index, :, :], cmap="plasma", alpha=0.5)
     for ax in ax:
         ax.axis("off")
     plt.tight_layout()
