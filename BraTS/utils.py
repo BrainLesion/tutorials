@@ -1,11 +1,15 @@
-import os
+from pathlib import Path
 import matplotlib.pyplot as plt
 import nibabel as nib
 
 DATA_FOLDER = "data"
 
 
-def visualize_data(data_folder: str = DATA_FOLDER, slice_index: int = 75):
+def visualize_data(
+    data_folder: str = DATA_FOLDER,
+    subject_id: str = "BraTS-GLI-00001-000",
+    slice_index: int = 75,
+):
     """Visualize the MRI modalities for a given slice index
 
     Args:
@@ -14,9 +18,10 @@ def visualize_data(data_folder: str = DATA_FOLDER, slice_index: int = 75):
     """
     _, axes = plt.subplots(1, 4, figsize=(12, 10))
 
-    modalities = ["t1", "t1c", "t2", "flair"]
+    subject_path = Path(data_folder) / subject_id
+    modalities = ["t1n", "t1c", "t2f", "t2w"]
     for i, mod in enumerate(modalities):
-        modality_file = os.path.join(data_folder, f"{mod}.nii.gz")
+        modality_file = subject_path / f"{subject_id}-{mod}.nii.gz"
         modality_np = nib.load(modality_file).get_fdata().transpose(2, 1, 0)
         axes[i].set_title(mod)
         axes[i].imshow(modality_np[slice_index, :, :], cmap="gray")
