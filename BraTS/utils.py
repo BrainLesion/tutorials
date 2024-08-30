@@ -69,3 +69,22 @@ def visualize_segmentation(modality_file: str, segmentation_file: str):
     for ax in ax:
         ax.axis("off")
     plt.tight_layout()
+
+
+def visualize_inpainting(t1n_voided: str, prediction: str):
+    """Visualize the inpainting results
+
+    Args:
+        t1n_voided (str): Voided T1 modality file
+        prediction (str): Inpainting prediction file
+    """
+    voided_np = nib.load(t1n_voided).get_fdata().transpose(2, 1, 0)
+    inpainting_np = nib.load(prediction).get_fdata().transpose(2, 1, 0)
+    _, ax = plt.subplots(1, 2, figsize=(8, 4))
+
+    slice_index = voided_np.shape[0] // 2  # You can choose any slice here
+    ax[0].imshow(voided_np[slice_index, :, :], cmap="gray")
+    ax[1].imshow(inpainting_np[slice_index, :, :], cmap="gray")
+    for ax in ax:
+        ax.axis("off")
+    plt.tight_layout()
