@@ -5,7 +5,7 @@ import nibabel as nib
 DATA_FOLDER = "data"
 
 
-def visualize_data(
+def visualize_segmentation_data(
     data_folder: str = DATA_FOLDER,
     subject_id: str = "BraTS-GLI-00001-000",
     slice_index: int = 75,
@@ -20,6 +20,29 @@ def visualize_data(
 
     subject_path = Path(data_folder) / subject_id
     modalities = ["t1n", "t1c", "t2f", "t2w"]
+    for i, mod in enumerate(modalities):
+        modality_file = subject_path / f"{subject_id}-{mod}.nii.gz"
+        modality_np = nib.load(modality_file).get_fdata().transpose(2, 1, 0)
+        axes[i].set_title(mod)
+        axes[i].imshow(modality_np[slice_index, :, :], cmap="gray")
+        axes[i].axis("off")
+
+
+def visualize_inpainting_data(
+    data_folder: str = DATA_FOLDER,
+    subject_id: str = "BraTS-GLI-00001-000",
+    slice_index: int = 75,
+):
+    """Visualize the MRI modalities for a given slice index
+
+    Args:
+        data_folder (str, optional): Path to the folder containing the t1n and mask files. Defaults to DATA_FOLDER.
+        slice_index (int, optional): Slice to be visualized (first index in data of shape (155, 240, 240)). Defaults to 75.
+    """
+    _, axes = plt.subplots(1, 2, figsize=(6, 10))
+
+    subject_path = Path(data_folder) / subject_id
+    modalities = ["t1n-voided", "mask"]
     for i, mod in enumerate(modalities):
         modality_file = subject_path / f"{subject_id}-{mod}.nii.gz"
         modality_np = nib.load(modality_file).get_fdata().transpose(2, 1, 0)
