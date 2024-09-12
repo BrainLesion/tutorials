@@ -1,61 +1,48 @@
 # Panoptica Tutorials
 
 This folder contains several Jupyter notebooks to showcase different possible use cases of the [panoptica package](https://github.com/BrainLesion/panoptica).
-The package allows to compute instance-wise segmentation quality metrics for 2D and 3D semantic- and instance segmentation maps by providing 3 core modules:
 
-**1. Instance Approximator:** instance approximation algorithms in panoptic segmentation evaluation. Available now: connected components algorithm.
+## Notebooks
+### Semantic: Spine example
+`example_spine_semantic.ipynb`  
 
-**2. Instance Matcher:** instance matching algorithm in panoptic segmentation evaluation, to align and compare predicted instances with reference instances.
+[![nbviewer](https://raw.githubusercontent.com/jupyter/design/master/logos/Badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/BrainLesion/tutorials/blob/main/panoptica/example_spine_semantic.ipynb)
+<a target="_blank" href="https://colab.research.google.com/github/BrainLesion/tutorials/blob/main/panoptica/example_spine_semantic.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
 
-**3. Instance Evaluator:** Evaluation of panoptic segmentation performance by evaluating matched instance pairs and calculating various metrics like true positives, Dice score, IoU, and ASSD for each instance.
+### Matched Instance: Spine example
+`example_spine_matched_instance.ipynb`  
 
-![workflow_figure](https://github.com/BrainLesion/panoptica/blob/main/examples/figures/workflow.png)
+[![nbviewer](https://raw.githubusercontent.com/jupyter/design/master/logos/Badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/BrainLesion/tutorials/blob/main/panoptica/example_spine_matched_instance.ipynb)
+<a target="_blank" href="https://colab.research.google.com/github/BrainLesion/tutorials/blob/main/panoptica/example_spine_matched_instance.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
 
-## Use Cases
 
-### Semantic Segmentation Input
+### Unmatched Instance: Spine example
+`example_spine_unmatched_instance.ipynb`  
 
-<img src="https://github.com/BrainLesion/panoptica/blob/main/examples/figures/semantic.png?raw=true" alt="semantic_figure" height="300"/>
+[![nbviewer](https://raw.githubusercontent.com/jupyter/design/master/logos/Badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/BrainLesion/tutorials/blob/main/panoptica/example_spine_unmatched_instance.ipynb)
+<a target="_blank" href="https://colab.research.google.com/github/BrainLesion/tutorials/blob/main/panoptica/example_spine_unmatched_instance.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
 
-Although for many biomedical segmentation problems, an instance-wise evaluation is highly relevant and desirable, they are still addressed as semantic segmentation problems due to lack of appropriate instance labels.
 
-**Modules [1-3]** can be used to obtain panoptic metrics of matched instances based on a semantic segmentation input.
+### Matching: Spine example
+`example_spine_matching_algorithm.ipynb`  
 
-[Jupyter Notebook Example](https://github.com/BrainLesion/tutorials/tree/main/panoptica/example_spine_semantic.ipynb)
+[![nbviewer](https://raw.githubusercontent.com/jupyter/design/master/logos/Badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/BrainLesion/tutorials/blob/main/panoptica/example_spine_matching_algorithm.ipynb)
+<a target="_blank" href="https://colab.research.google.com/github/BrainLesion/tutorials/blob/main/panoptica/example_spine_matching_algorithm.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
 
-### Unmatched Instances Input
 
-<img src="https://github.com/BrainLesion/panoptica/blob/main/examples/figures/unmatched_instance.png?raw=true" alt="unmatched_instance_figure" height="300"/>
+### Save/Load Configs example:
+`example_config.ipynb`  
 
-It is a common issue that instance segementation outputs have good segmentations with mismatched labels.
+[![nbviewer](https://raw.githubusercontent.com/jupyter/design/master/logos/Badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/BrainLesion/tutorials/blob/main/panoptica/example_config.ipynb)
+<a target="_blank" href="https://colab.research.google.com/github/BrainLesion/tutorials/blob/main/panoptica/example_config.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
 
-For this case **modules [2-3]** can be utilized to match the instances and report panoptic metrics.
-
-[Jupyter Notebook Example](https://github.com/BrainLesion/tutorials/tree/main/panoptica/example_spine_unmatched_instance.ipynb)
-
-### Matched Instances Input
-
-<img src="https://github.com/BrainLesion/panoptica/blob/main/examples/figures/matched_instance.png?raw=true" alt="matched_instance_figure" height="300"/>
-
-Ideally the input data already provides matched instances.
-
-In this case **module 3** can be used to directly report panoptic metrics without requiring any internal preprocessing.
-
-[Jupyter Notebook Example](https://github.com/BrainLesion/tutorials/tree/main/panoptica/example_spine_matched_instance.ipynb)
-
-## Citation
-
-If you use panoptica in your research, please cite it to support the development!
-
-Kofler, F., Möller, H., Buchner, J. A., de la Rosa, E., Ezhov, I., Rosier, M., Mekki, I., Shit, S., Negwer, M., Al-Maskari, R., Ertürk, A., Vinayahalingam, S., Isensee, F., Pati, S., Rueckert, D., Kirschke, J. S., Ehrlich, S. K., Reinke, A., Menze, B., Wiestler, B., & Piraud, M. (2023). _Panoptica -- instance-wise evaluation of 3D semantic and instance segmentation maps._ [arXiv preprint arXiv:2312.02608](https://arxiv.org/abs/2312.02608).
-
-```
-@misc{kofler2023panoptica,
-      title={Panoptica -- instance-wise evaluation of 3D semantic and instance segmentation maps},
-      author={Florian Kofler and Hendrik Möller and Josef A. Buchner and Ezequiel de la Rosa and Ivan Ezhov and Marcel Rosier and Isra Mekki and Suprosanna Shit and Moritz Negwer and Rami Al-Maskari and Ali Ertürk and Shankeeth Vinayahalingam and Fabian Isensee and Sarthak Pati and Daniel Rueckert and Jan S. Kirschke and Stefan K. Ehrlich and Annika Reinke and Bjoern Menze and Benedikt Wiestler and Marie Piraud},
-      year={2023},
-      eprint={2312.02608},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
-}
-```
