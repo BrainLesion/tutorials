@@ -31,6 +31,6 @@ def visualize_defacing(
     """
 
     modality_np = nib.load(file).get_fdata().transpose(2, 1, 0)
-    plt.figure(figsize=(6, 6))
+    plt.figure(figsize=(4, 5))
     plt.title(file.name)
     plt.imshow(modality_np[:, ::-1, 75], cmap="gray", origin="lower")
