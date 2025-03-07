@@ -88,3 +88,33 @@ def visualize_inpainting(t1n_voided: str, prediction: str):
     for ax in ax:
         ax.axis("off")
     plt.tight_layout()
+
+
+def visualize_missing_mri_t2w(
+    synthesized_t2w: str,
+    data_folder: str = DATA_FOLDER,
+    subject_id: str = "BraTS-GLI-00001-000",
+    slice_index: int = 75,
+):
+    """Visualize the MRI modalities for a given slice index
+
+    Args:
+        data_folder (str, optional): Path to the folder containing the t1, t1c, t2 & flair file. Defaults to DATA_FOLDER.
+        slice_index (int, optional): Slice to be visualized (first index in data of shape (155, 240, 240)). Defaults to 75.
+    """
+    _, axes = plt.subplots(1, 5, figsize=(12, 10))
+
+    subject_path = Path(data_folder) / subject_id
+    modalities = ["t1n", "t1c", "t2f", "t2w"]
+    for i, mod in enumerate(modalities):
+        modality_file = subject_path / f"{subject_id}-{mod}.nii.gz"
+        modality_np = nib.load(modality_file).get_fdata().transpose(2, 1, 0)
+        axes[i].set_title(mod)
+        axes[i].imshow(modality_np[slice_index, :, :], cmap="gray")
+        axes[i].axis("off")
+
+    # show synthetic T2w
+    synthetic_t2w_np = nib.load(synthesized_t2w).get_fdata().transpose(2, 1, 0)
+    axes[4].set_title("Synthesized t2w")
+    axes[4].imshow(synthetic_t2w_np[slice_index, :, :], cmap="gray")
+    axes[4].axis("off")
