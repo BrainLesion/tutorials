@@ -39,7 +39,7 @@ def visualize_inpainting_data(
     """Visualize the MRI modalities for a given slice index
 
     Args:
-        data_folder (Union[str, Path]): Path to the folder containing the t1n and mask files. Defaults to DATA_FOLDER.
+        data_folder (Union[str, Path], optional): Path to the folder containing the t1n and mask files. Defaults to DATA_FOLDER.
         slice_index (int, optional): Slice to be visualized (first index in data of shape (155, 240, 240)). Defaults to 75.
     """
     _, axes = plt.subplots(1, 2, figsize=(6, 10))
