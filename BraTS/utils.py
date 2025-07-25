@@ -16,7 +16,7 @@ def visualize_segmentation_data(
     """Visualize the MRI modalities for a given slice index
 
     Args:
-        data_folder (Union[str, Path]): Path to the folder containing the t1, t1c, t2 & flair file. Defaults to DATA_FOLDER.
+        data_folder (Union[str, Path], optional): Path to the folder containing the t1, t1c, t2 & flair file. Defaults to DATA_FOLDER.
         slice_index (int, optional): Slice to be visualized (first index in data of shape (155, 240, 240)). Defaults to 75.
     """
     _, axes = plt.subplots(1, 4, figsize=(12, 10))
